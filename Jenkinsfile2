@@ -2,7 +2,7 @@ pipeline {
   agent { dockerfile true }
   stages {
     stage('Docker Test') {
-      stages {
+      steps {
         sh  '''
           node --version
           git --version
