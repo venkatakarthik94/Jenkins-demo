@@ -1,0 +1,6 @@
+FROM hashicorp/terraform
+COPY main.tf .
+COPY vars.tf .
+RUN terraform init
+RUN terraform plan
+RUN terraform apply
