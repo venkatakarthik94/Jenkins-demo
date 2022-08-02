@@ -2,6 +2,9 @@ pipeline {
   agent {label 'fargateDemo'}
   stages {
     stage ('build') {
+      agent {
+        docker {image 'alpine'}
+      }
       steps {
         sh 'echo "test"'
         sh 'docker --version'
@@ -11,6 +14,9 @@ pipeline {
       }  
     }
     stage('push') {
+      agent {
+        docker {image 'alpine'}
+      }
       steps {
         sh 'docker push 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test'
       }
