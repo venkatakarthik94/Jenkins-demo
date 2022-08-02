@@ -1,0 +1,27 @@
+pipeline {
+  agent {label 'fargateDemo'}
+  stages {
+    stage ('build') {
+      steps {
+        sh 'docker build -f Dockerfile1 -t demo .'
+        sh 'aws ecr get-login-password --region us-east-1 | docker login --username kittu --password-stdin 925565113573.dkr.ecr.us-east-1.amazonaws.com'
+        sh 'docker tag demo:latest 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test'
+      }  
+    }
+    stage('push') {
+      steps {
+        sh 'sh 'docker push 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test''
+      }
+    }
+    stage ('Deploy') {
+      agent {
+        docker {image '925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test'}
+      }
+      steps {
+        sh 'terraform init'
+        sh 'terraform plan'
+        sh 'terraform apply'
+      }  
+    }
+  }
+}
