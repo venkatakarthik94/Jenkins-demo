@@ -3,6 +3,8 @@ pipeline {
   stages {
     stage ('build') {
       steps {
+        sh 'echo "test"'
+        sh 'docker --version'
         sh 'docker build -f Dockerfile1 -t demo .'
         sh 'aws ecr get-login-password --region us-east-1 | docker login --username kittu --password-stdin 925565113573.dkr.ecr.us-east-1.amazonaws.com'
         sh 'docker tag demo:latest 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test'
