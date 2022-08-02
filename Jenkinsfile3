@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage ('dependencies') {
       steps {
-        sh 'apt install docker'
+        sh 'sudo apt install docker'
       }
     }  
     stage ('build') {
