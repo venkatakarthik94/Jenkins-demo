@@ -10,7 +10,7 @@ pipeline {
     }
     stage('push') {
       steps {
-        sh 'sh 'docker push 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test''
+        sh 'docker push 925565113573.dkr.ecr.us-east-1.amazonaws.com/demo:test'
       }
     }
     stage ('Deploy') {
