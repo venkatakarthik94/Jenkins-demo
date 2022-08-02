@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage ('dependencies') {
       steps {
-        sh 'yum install docker'
         sh 'apt install docker'
       }
     }  
