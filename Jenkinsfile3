@@ -1,6 +1,12 @@
 pipeline {
   agent {label 'fargateDemo'}
   stages {
+    stage ('dependencies') {
+      steps {
+        sh 'yum install docker'
+        sh 'apt install docker'
+      }
+    }  
     stage ('build') {
       agent {
         docker {image 'alpine'}
