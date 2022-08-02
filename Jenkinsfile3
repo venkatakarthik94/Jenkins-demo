@@ -7,6 +7,7 @@ pipeline {
       }
       steps {
         sh 'echo "test"'
+        sh 'cat /etc/*release*'
         sh 'docker --version'
         sh 'docker build -f Dockerfile1 -t demo .'
         sh 'aws ecr get-login-password --region us-east-1 | docker login --username kittu --password-stdin 925565113573.dkr.ecr.us-east-1.amazonaws.com'
