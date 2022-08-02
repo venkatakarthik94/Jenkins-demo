@@ -1,6 +1,7 @@
 # Configure and downloading plugins for aws
 provider "aws" {
        profile = "arn:aws:iam::925565113573:role/Admin-role"
+       region     = "${var.aws_region}"
 }
 
 # Creating VPC
